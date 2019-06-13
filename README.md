@@ -1,5 +1,5 @@
 # Bounding Box
-**Bounding Box** is a library to plot pretty bounding boxes with a simple API.
+**Bounding Box** is a library to plot pretty bounding boxes with a simple Python API.
 
 *Please notice this lib does **not** do object detection for you, but only helps to display pretty bounding boxes with a carefully chosen set of colors.*
 
