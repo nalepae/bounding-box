@@ -22,15 +22,16 @@
 
 Please see below some examples of bounding boxes plotted with this library.
 
-
-![Winton MARSALIS](https://github.com/nalepae/bounding-box/blob/master/docs/images/winton_bb.png "Winton MARSALIS")
-![Robots](https://github.com/nalepae/bounding-box/blob/master/docs/images/nao-romeo-pepper_bb.png "Robots")
-![Khatia BUNIATISHVILI](https://github.com/nalepae/bounding-box/blob/master/docs/images/khatia_bb.png "Khatia BUNIATISHVILI")
-![The Selfie](https://github.com/nalepae/bounding-box/blob/master/docs/images/selfie_bb.png "The Selfie")
-![Paragliders](https://github.com/nalepae/bounding-box/blob/master/docs/images/paragliders_bb.png "Paragliders")
-![Ski & Paraglider](https://github.com/nalepae/bounding-box/blob/master/docs/images/ski-paraglider_bb.png "Ski & Paraglider")
-![POBB](https://github.com/nalepae/bounding-box/blob/master/docs/images/pobb_bb.png "POBB")
-![Clarifloue](https://github.com/nalepae/bounding-box/blob/master/docs/images/clarifloue_bb.png "Clarifloue")
+<p align="center">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/winton_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/nao-romeo-pepper_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/khatia_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/selfie_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/paragliders_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/ski-paraglider_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/pobb_bb.png">
+  <img src="https://github.com/nalepae/bounding-box/blob/master/docs/images/clarifloue_bb.png">
+</p>
 
 ## Installation
 `$ pip install bounding-box [--user]`
