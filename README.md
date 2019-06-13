@@ -1,6 +1,25 @@
 # Bounding Box
 **Bounding Box** is a library to plot pretty bounding boxes with a simple API.
 
+<table>
+<tr>
+  <td>Latest Release</td>
+  <td>
+    <a href="https://pypi.org/project/bounding-box/">
+    <img src="https://img.shields.io/pypi/v/bounding-box.svg" alt="latest release" />
+    </a>
+  </td>
+</tr>
+<tr>
+  <td>License</td>
+  <td>
+    <a href="https://github.com/nalepae/bounding-box/blob/master/LICENSE">
+    <img src="https://img.shields.io/pypi/l/bounding-box.svg" alt="license" />
+    </a>
+  </td>
+</tr>
+</table>
+
 Please see below some examples of bounding boxes plotted with this library.
 
 
