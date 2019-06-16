@@ -22,6 +22,8 @@
 </tr>
 </table>
 
+**WARNING:** Version 1.0 of this library is not yet released. API breaking changes could still occur! 
+
 Please see below some examples of bounding boxes plotted with this library.
 
 <p align="center">
