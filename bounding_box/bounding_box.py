@@ -66,20 +66,6 @@ def add(image, left, top, right, bottom, label=None, color=None):
     except ValueError:
         raise TypeError("'left', 'top', 'right' & 'bottom' must be a number")
 
-    image_height, image_width, _ = image.shape
-
-    if not 0 <= top <= image_height:
-        raise TypeError("'top' must be between 0 and " + str(image_height))
-
-    if not 0 <= bottom <= image_height:
-        raise TypeError("'bottom' must be between 0 and " + str(image_height))
-
-    if not 0 <= left <= image_width:
-        raise TypeError("'left' must be between 0 and " + str(image_width))
-
-    if not 0 <= right <= image_width:
-        raise TypeError("'right' must be between 0 and " + str(image_width))
-
     if label and type(label) is not str:
         raise TypeError("'label' must be a str")
 
@@ -104,14 +90,18 @@ def add(image, left, top, right, bottom, label=None, color=None):
     _cv2.rectangle(image, (left, top), (right, bottom), color, 2)
 
     if label:
+        _, image_width, _ = image.shape
+
         label_image =  _get_label_image(label, color_text, color)
         label_height, label_width, _ = label_image.shape
 
-        rectangle_bottom = top
-        rectangle_left = left - 1
+        rectangle_height, rectangle_width = 1 + label_height, 1 + label_width
 
-        rectangle_top = rectangle_bottom - label_height - 1
-        rectangle_right = rectangle_left + 1 + label_width
+        rectangle_bottom = top
+        rectangle_left = max(0, min(left - 1, image_width - rectangle_width))
+
+        rectangle_top = rectangle_bottom - rectangle_height
+        rectangle_right = rectangle_left + rectangle_width
 
         label_top = rectangle_top + 1
 
@@ -125,7 +115,9 @@ def add(image, left, top, right, bottom, label=None, color=None):
         label_bottom = label_top + label_height
         label_right = label_left + label_width
 
-        _cv2.rectangle(image, (rectangle_left, rectangle_top),
-                      (rectangle_right, rectangle_bottom), color, -1)
+        rec_left_top = (rectangle_left, rectangle_top)
+        rec_right_bottom = (rectangle_right, rectangle_bottom)
+
+        _cv2.rectangle(image, rec_left_top, rec_right_bottom, color, -1)
 
         image[label_top:label_bottom, label_left:label_right, :] = label_image

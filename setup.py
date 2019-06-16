@@ -7,7 +7,7 @@ install_requires = [
 
 setup(
     name='bounding_box',
-    version='0.1.2',
+    version='0.1.3',
 
     python_requires='>=2.7',
 
