@@ -58,7 +58,7 @@ def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr):
 
     return np.concatenate(image).transpose(1, 2, 0)
 
-def add_bounding_box(image, left, top, right, bottom, label=None, color=None):
+def add(image, left, top, right, bottom, label=None, color=None):
     if type(image) is not _np.ndarray:
         raise TypeError("'image' parameter must be a numpy.ndarray")
     try:
