@@ -58,7 +58,7 @@ def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr):
 
     return np.concatenate(image).transpose(1, 2, 0)
 
-def add(image, left, top, right, bottom, label=None, color=None):
+def add(image, left, top, right, bottom, label=None, color=None, thickness=1):
     if type(image) is not _np.ndarray:
         raise TypeError("'image' parameter must be a numpy.ndarray")
     try:
@@ -87,7 +87,7 @@ def add(image, left, top, right, bottom, label=None, color=None):
     colors = [_rgb_to_bgr(item) for item in _COLOR_NAME_TO_RGB[color]]
     color, color_text = colors
 
-    _cv2.rectangle(image, (left, top), (right, bottom), color, 2)
+    _cv2.rectangle(image, (left, top), (right, bottom), color, thickness=thickness)
 
     if label:
         _, image_width, _ = image.shape
