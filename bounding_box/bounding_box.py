@@ -36,8 +36,6 @@ _COLOR_NAMES = list(_COLOR_NAME_TO_RGB)
 _DEFAULT_COLOR_NAME = "green"
 
 _FONT_PATH = _os.path.join(_LOC, "Ubuntu-B.ttf")
-_FONT_HEIGHT = 15
-_FONT = ImageFont.truetype(_FONT_PATH, _FONT_HEIGHT)
 
 def _rgb_to_bgr(color):
     return list(reversed(color))
@@ -45,7 +43,7 @@ def _rgb_to_bgr(color):
 def _color_image(image, font_color, background_color):
     return background_color + (font_color - background_color) * image / 255
 
-def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr):
+def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr, _FONT):
     text_image = _FONT.getmask(text)
     shape = list(reversed(text_image.size))
     bw_image = np.array(text_image).reshape(shape)
@@ -58,7 +56,9 @@ def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr):
 
     return np.concatenate(image).transpose(1, 2, 0)
 
-def add(image, left, top, right, bottom, label=None, color=None):
+def add(image, left, top, right, bottom, label=None, color=None, font_size=15):
+    _FONT_HEIGHT = font_size
+    _FONT = ImageFont.truetype(_FONT_PATH, _FONT_HEIGHT)
     if type(image) is not _np.ndarray:
         raise TypeError("'image' parameter must be a numpy.ndarray")
     try:
@@ -92,7 +92,7 @@ def add(image, left, top, right, bottom, label=None, color=None):
     if label:
         _, image_width, _ = image.shape
 
-        label_image =  _get_label_image(label, color_text, color)
+        label_image =  _get_label_image(label, color_text, color, _FONT)
         label_height, label_width, _ = label_image.shape
 
         rectangle_height, rectangle_width = 1 + label_height, 1 + label_width
