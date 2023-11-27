@@ -1,3 +1,7 @@
+
+Fork from https://github.com/nalepae/bounding-box/tree/master. I've set the line width and label size proportional to the image size. Helpfull for large images. I've opened a pull request to the original repo, but it appears to be non-active. Hence I'll use my own fork. Original documentation below.
+
+
 # Bounding Box
 **Bounding Box** is a library to plot pretty bounding boxes with a simple Python API.
 
