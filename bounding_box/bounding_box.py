@@ -36,8 +36,6 @@ _COLOR_NAMES = list(_COLOR_NAME_TO_RGB)
 _DEFAULT_COLOR_NAME = "green"
 
 _FONT_PATH = _os.path.join(_LOC, "Ubuntu-B.ttf")
-_FONT_HEIGHT = 15
-_FONT = ImageFont.truetype(_FONT_PATH, _FONT_HEIGHT)
 
 def _rgb_to_bgr(color):
     return list(reversed(color))
@@ -45,8 +43,8 @@ def _rgb_to_bgr(color):
 def _color_image(image, font_color, background_color):
     return background_color + (font_color - background_color) * image / 255
 
-def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr):
-    text_image = _FONT.getmask(text)
+def _get_label_image(text, font_color_tuple_bgr, background_color_tuple_bgr, font):
+    text_image = font.getmask(text)
     shape = list(reversed(text_image.size))
     bw_image = np.array(text_image).reshape(shape)
 
@@ -87,12 +85,18 @@ def add(image, left, top, right, bottom, label=None, color=None):
     colors = [_rgb_to_bgr(item) for item in _COLOR_NAME_TO_RGB[color]]
     color, color_text = colors
 
-    _cv2.rectangle(image, (left, top), (right, bottom), color, 2)
+    image_height, image_width, _ = image.shape
+    line_width_box = max(round(min(image_height, image_width) / 150), 2)
+
+    _cv2.rectangle(image, (left, top), (right, bottom), color, line_width_box)
 
     if label:
-        _, image_width, _ = image.shape
 
-        label_image =  _get_label_image(label, color_text, color)
+        font_height = max(round(min(image_height, image_width) / 40), 15)
+        font = ImageFont.truetype(_FONT_PATH, font_height)
+
+        label_image =  _get_label_image(label, color_text, color, font)
+
         label_height, label_width, _ = label_image.shape
 
         rectangle_height, rectangle_width = 1 + label_height, 1 + label_width
